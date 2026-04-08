@@ -147,6 +147,28 @@ function showTT(e,d){const sb=SB[d.stage];let pips='';for(let i=1;i<=5;i++)pips+
 function moveTT(e){let x=e.clientX+14,y=e.clientY+14;if(x+330>window.innerWidth)x=e.clientX-330-14;const r=tt.getBoundingClientRect();if(y+r.height>window.innerHeight)y=e.clientY-r.height-14;if(y<4)y=4;tt.style.left=x+'px';tt.style.top=y+'px'}
 function hideTT(){tt.classList.remove('show')}
 document.getElementById('filters').addEventListener('click',e=>{const pill=e.target.closest('.pill');if(!pill)return;document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on'));pill.classList.add('on');const f=pill.dataset.f;document.querySelectorAll('[data-stage]').forEach(g=>{if(f==='all'){g.style.opacity='';return}g.style.opacity=g.getAttribute('data-stage')===f?'':'0.08'})});
+
+// Load news-data.json if it exists
+(async function loadNews(){
+  try {
+    const res = await fetch('news-data.json');
+    if (!res.ok) return;
+    const data = await res.json();
+    const countries = data.countries || {};
+    Object.entries(countries).forEach(([code, info]) => {
+      if (D[code] && info.headline && info.headline !== 'No recent developments') {
+        const src = info.source ? ' — ' + info.source : '';
+        const dt = info.date ? ' (' + info.date + ')' : '';
+        D[code].news = '📰 ' + info.headline + src + dt;
+      }
+    });
+    // Update the "last refreshed" display if we have a date
+    if (data.updated) {
+      const srcEl = document.querySelector('.source');
+      if (srcEl) srcEl.textContent = 'The Current · News updated ' + data.updated;
+    }
+  } catch(e) { /* news-data.json not found — tooltips show placeholder */ }
+})();
 </script>
 </body>
 </html>
