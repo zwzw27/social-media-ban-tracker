@@ -1,0 +1,110 @@
+{
+  "updated": "2026-04-08",
+  "countries": {
+    "US": {
+      "headline": "US Senate introduced the No Social Media for Minors Act proposing a federal ban on social media accounts for under-16s, escalating Congressional pressure on platforms well beyond existing COPPA obligations.",
+      "source": "Davis Wright Tremaine / Congress.gov",
+      "date": "January 2026"
+    },
+    "BR": {
+      "headline": "Brazil's Digital ECA (Digital Statute for Children) has come into force, banning predatory advertising targeting minors and monetization of child-sexualizing content — a major compliance shift for brands and media buyers in the country.",
+      "source": "Agência Brasil",
+      "date": "January 2026"
+    },
+    "NO": {
+      "headline": "Norway has launched a formal public consultation on draft legislation to prohibit social media platforms from serving users under 15, marking a concrete step toward one of Europe's strictest enforceable youth age-gates.",
+      "source": "Norwegian Government (regjeringen.no)",
+      "date": "June 2025"
+    },
+    "FI": {
+      "headline": "Finland's Prime Minister has publicly backed a ban on social media for under-15s, with active government discussions underway that could significantly shrink addressable youth audiences for digital media buyers.",
+      "source": "Euronews",
+      "date": "December 2025"
+    },
+    "DK": {
+      "headline": "Denmark's government has formally agreed to ban social media access for under-15s, intensifying age-verification requirements on platforms and narrowing the legally reachable youth audience for advertisers.",
+      "source": "PBS NewsHour",
+      "date": "November 2025"
+    },
+    "UK": {
+      "headline": "The UK's House of Commons Library has issued a fresh briefing on child social media ban proposals as Ofcom rolls out the Online Safety Act's children's safety codes, tightening platform compliance obligations for advertisers targeting under-18s.",
+      "source": "House of Commons Library",
+      "date": "February 2026"
+    },
+    "DE": {
+      "headline": "Multiple German political parties have backed a social media ban for minors, but EU legal constraints present hurdles, leaving media buyers in Germany's large youth market in a prolonged compliance grey zone.",
+      "source": "Health Policy Watch",
+      "date": "January 2026"
+    },
+    "CZ": {
+      "headline": "Czech Prime Minister Babiš has backed a social media ban for under-15s with legislation potentially arriving as early as 2026, putting Czechia on a fast track to join the European wave of youth digital restrictions.",
+      "source": "Prague Morning",
+      "date": "February 2026"
+    },
+    "FR": {
+      "headline": "France's Senate has approved restricting social media for under-15s, though the two legislative chambers remain divided on implementation details, keeping final brand compliance timelines uncertain.",
+      "source": "Euronews",
+      "date": "February 2026"
+    },
+    "AT": {
+      "headline": "Austria has announced a mandatory minimum age of 14 for social media use, citing addiction risks — introducing new age-verification compliance requirements for platforms and agencies in the Austrian market.",
+      "source": "Al Jazeera",
+      "date": "February 2026"
+    },
+    "SI": {
+      "headline": "Slovenia's Deputy Prime Minister has confirmed draft legislation is in preparation to ban social media for under-15s, aligning Slovenia with a growing Central European wave of youth-protection regulation.",
+      "source": "Reuters",
+      "date": "February 2026"
+    },
+    "IT": {
+      "headline": "Italy is deliberately taking a softer approach than its European peers — favouring digital literacy, parental oversight, and platform accountability over outright bans — preserving a more stable youth-marketing environment for now.",
+      "source": "Italian media / analyst reporting",
+      "date": "February 2026"
+    },
+    "ES": {
+      "headline": "Spain's Prime Minister Sánchez has announced a broad package banning social media for under-16s, with mandatory age verification and increased executive liability for platforms — one of the EU's most sweeping youth-protection proposals to date.",
+      "source": "JURIST News",
+      "date": "February 2026"
+    },
+    "PT": {
+      "headline": "Portugal has approved legislation requiring social media accounts for 13–15-year-olds to be verified via the national Digital Mobile Key, setting a high technical bar for age-gating that will challenge platform and advertiser compliance.",
+      "source": "Euronews",
+      "date": "February 2026"
+    },
+    "GR": {
+      "headline": "Greece is set to formally announce a device-level social media block for under-15s using its Kids Wallet system — a unique hardware-based enforcement model being closely watched as a possible template across Europe.",
+      "source": "ProtoThema / Reuters",
+      "date": "February 2026"
+    },
+    "CN": {
+      "headline": "China's mandatory 'Minor Mode' — imposing daily screen-time caps, late-night lockouts, and content filters for all users under 18 — is being studied globally as both a regulatory blueprint and a cautionary tale for youth digital policy.",
+      "source": "ITIF",
+      "date": "July 2025"
+    },
+    "PK": {
+      "headline": "Pakistan's Senate introduced then withdrew the Social Media Age Restriction Bill 2025 targeting under-16s, signalling political intent but ongoing legislative uncertainty for platforms and advertisers in the market.",
+      "source": "Library of Congress",
+      "date": "July 2025"
+    },
+    "MY": {
+      "headline": "Malaysia has announced a ban on social media for under-16s to take effect in 2026 under its Online Safety Act, requiring platforms to build age-verification mechanisms ahead of enforcement.",
+      "source": "Associated Press",
+      "date": "November 2025"
+    },
+    "ID": {
+      "headline": "Indonesia's PP Tunas regulation — banning social media access for minors under 16 and mandating child data protection measures — has come into effect, making Indonesia one of Southeast Asia's first enforcers of a hard youth social media ban.",
+      "source": "JURIST News",
+      "date": "February 2026"
+    },
+    "AU": {
+      "headline": "Australia's eSafety Commissioner confirmed that platforms removed 4.7 million under-16 accounts by mid-December 2025, with Rules further tightened in March 2026 — cementing Australia as the world's most advanced enforcer of youth social media restrictions.",
+      "source": "eSafety Commissioner",
+      "date": "March 2026"
+    },
+    "NZ": {
+      "headline": "New Zealand's government has confirmed it will introduce the Social Media (Age-Restricted Users) Bill in 2026 ahead of the general election, modelled directly on Australia's ban and signalling an imminent trans-Tasman regulatory alignment.",
+      "source": "NZ Government / Wikipedia",
+      "date": "February 2026"
+    }
+  }
+}
