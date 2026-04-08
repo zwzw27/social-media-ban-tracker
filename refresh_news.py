@@ -88,9 +88,9 @@ If you cannot find recent news for a country, use:
     print(f"Searching for {len(COUNTRIES)} countries...")
 
     message = client.messages.create(
-        model="claude-haiku-4-5-20251001",
+        model="claude-sonnet-4-6",
         max_tokens=8000,
-        tools=[{"type": "web_search_20260209", "name": "web_search"}],
+        tools=[{"type": "web_search_20260209", "name": "web_search", "max_uses": 25}],
         messages=[{"role": "user", "content": prompt}],
     )
 
