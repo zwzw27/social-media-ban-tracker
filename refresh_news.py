@@ -65,7 +65,11 @@ For each country, return:
 2. The source name
 3. The approximate date
 
-CRITICAL: You must search the web for current information. Do not rely on training data.
+CRITICAL RULES:
+- You MUST search the web for current information. Do not rely on training data.
+- ONLY cite reputable, established news outlets. Acceptable sources include: Reuters, AP, Bloomberg, BBC, Financial Times, The Guardian, Wall Street Journal, TechCrunch, CNBC, Al Jazeera, PBS, NPR, Euronews, The Washington Post, The New York Times, Politico, Nikkei, South China Morning Post, and major national outlets (e.g. RNZ for New Zealand, ABC for Australia).
+- NEVER cite Wikipedia, student publications (e.g. Jurist), blogs, SEO content farms, or unverified sources.
+- If you cannot find a result from a reputable source for a country, return "No recent developments" rather than citing a low-quality source.
 
 Return ONLY valid JSON in this exact format, with no other text before or after:
 {{
@@ -80,7 +84,7 @@ Return ONLY valid JSON in this exact format, with no other text before or after:
   }}
 }}
 
-If you cannot find recent news for a country, use:
+If you cannot find recent news from a reputable source for a country, use:
 {{"headline": "No recent developments", "source": "", "date": ""}}
 """
 
