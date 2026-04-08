@@ -38,6 +38,7 @@ COUNTRIES = {
     "ID": "Indonesia social media ban minors under 16",
     "AU": "Australia social media ban under 16 eSafety enforcement",
     "NZ": "New Zealand social media ban minors",
+    "GR": "Greece social media ban minors under 15 Kids Wallet",
 }
 
 
@@ -87,7 +88,7 @@ If you cannot find recent news for a country, use:
     print(f"Searching for {len(COUNTRIES)} countries...")
 
     message = client.messages.create(
-        model="claude-sonnet-4-6",
+        model="claude-haiku-4-5-20251001",
         max_tokens=8000,
         tools=[{"type": "web_search_20260209", "name": "web_search"}],
         messages=[{"role": "user", "content": prompt}],
