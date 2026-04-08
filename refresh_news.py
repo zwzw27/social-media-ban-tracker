@@ -101,21 +101,41 @@ If you cannot find recent news for a country, use:
 
     full_text = "\n".join(text_parts)
 
-    # Parse JSON from response — strip any markdown fencing
-    clean = full_text.strip()
-    if clean.startswith("```"):
-        clean = clean.split("\n", 1)[1]  # remove first line
-    if clean.endswith("```"):
-        clean = clean.rsplit("```", 1)[0]
-    clean = clean.strip()
-    if clean.startswith("json"):
-        clean = clean[4:].strip()
+    # Extract JSON from response — Claude often wraps it in markdown fences
+    # and adds conversational text before/after
+    import re
+
+    # Strategy 1: Find JSON inside ```json ... ``` fences
+    fence_match = re.search(r'```(?:json)?\s*\n(\{.*?\})\s*\n```', full_text, re.DOTALL)
+    if fence_match:
+        json_str = fence_match.group(1)
+    else:
+        # Strategy 2: Find the outermost { ... } that contains "updated" and "countries"
+        brace_match = re.search(r'(\{\s*"updated".*\})', full_text, re.DOTALL)
+        if brace_match:
+            json_str = brace_match.group(1)
+            # Find the matching closing brace by counting
+            depth = 0
+            start = full_text.index(json_str)
+            for i, ch in enumerate(full_text[start:]):
+                if ch == '{': depth += 1
+                elif ch == '}': depth -= 1
+                if depth == 0:
+                    json_str = full_text[start:start + i + 1]
+                    break
+        else:
+            json_str = ""
+
+    if not json_str:
+        print(f"ERROR: Could not find JSON in Claude response")
+        print(f"Raw response:\n{full_text[:3000]}")
+        sys.exit(1)
 
     try:
-        data = json.loads(clean)
+        data = json.loads(json_str)
     except json.JSONDecodeError as e:
-        print(f"ERROR: Failed to parse JSON from Claude response: {e}")
-        print(f"Raw response:\n{full_text[:2000]}")
+        print(f"ERROR: Failed to parse extracted JSON: {e}")
+        print(f"Extracted text:\n{json_str[:2000]}")
         sys.exit(1)
 
     # Write output
