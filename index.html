@@ -4,290 +4,118 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Media Ban Tracker — The Current</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #FFFFFF;
-  --surface: #F7F5F2;
-  --text: #1A1A1A;
-  --dim: #6B6560;
-  --light: #9B9590;
-  --border: #E0D8D0;
-  --navy: #0A3161;
-  --navy-light: #E6F1FB;
-  --s1: #B5D4F4;
-  --s2: #85B7EB;
-  --s3: #378ADD;
-  --s4: #185FA5;
-  --s5: #042C53;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
-.page { max-width: 720px; margin: 0 auto; padding: 40px 20px 60px; }
-
-.kicker { font-size: 10.5px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--navy); margin-bottom: 8px; }
-h1 { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(26px, 4vw, 38px); font-weight: 400; line-height: 1.1; margin-bottom: 10px; }
-.subtitle { font-size: 14px; color: var(--dim); line-height: 1.6; margin-bottom: 28px; max-width: 580px; }
-
-.stats { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
-.stat { display: flex; flex-direction: column; }
-.stat-val { font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1; color: var(--navy); }
-.stat-lab { font-size: 10.5px; color: var(--light); margin-top: 2px; }
-
-.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--dim); margin-bottom: 28px; }
-.leg-item { display: flex; align-items: center; gap: 5px; }
-.leg-dot { width: 10px; height: 10px; border-radius: 2px; }
-
-.region { margin-bottom: 32px; }
-.region-head { font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; font-weight: 400; margin-bottom: 12px; color: var(--text); }
-.region-sub { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--light); font-weight: 400; }
-
-.row { display: flex; align-items: center; margin-bottom: 1px; cursor: pointer; padding: 4px 0; transition: background 0.12s; border-radius: 6px; }
-.row:hover { background: var(--surface); }
-.row-arr { width: 18px; flex-shrink: 0; font-size: 11px; color: var(--light); transition: transform 0.2s; text-align: center; }
-.row-arr.open { transform: rotate(90deg); }
-.row-name { width: 110px; flex-shrink: 0; font-size: 13px; font-weight: 500; padding: 6px 8px; }
-.row-bar-w { flex: 1; padding: 4px 4px 4px 0; }
-.row-bar-bg { width: 100%; height: 20px; background: var(--surface); border-radius: 3px; overflow: hidden; }
-.row-bar-fill { height: 100%; border-radius: 3px; }
-.row-stage { font-size: 11px; width: 80px; flex-shrink: 0; padding-left: 8px; font-weight: 500; }
-.row-when { font-size: 11px; color: var(--light); width: 85px; flex-shrink: 0; text-align: right; padding-right: 4px; }
-
-.dd { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
-.dd.open { max-height: 600px; }
-.card { margin: 4px 0 8px 128px; padding: 12px 14px; border-left: 3px solid var(--navy); background: var(--surface); }
-.card-line { font-size: 13px; color: var(--dim); line-height: 1.6; margin-bottom: 4px; }
-.card-line b { color: var(--text); font-weight: 500; }
-.card-action { font-size: 12px; color: var(--navy); line-height: 1.5; font-weight: 500; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
-.card-news { font-size: 11px; color: var(--light); margin-top: 8px; font-style: italic; }
-
-.thesis { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); }
-.thesis-tag { font-size: 11px; font-weight: 600; color: var(--navy); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
-.thesis-body { font-size: 13px; color: var(--dim); line-height: 1.6; }
-.source-line { font-size: 10px; color: var(--light); text-align: right; margin-top: 12px; }
-
-@media (max-width: 600px) {
-  .row-name { width: 80px; font-size: 12px; }
-  .row-stage { width: 65px; font-size: 10px; }
-  .row-when { width: 60px; font-size: 10px; }
-  .card { margin-left: 8px; }
-  .stats { gap: 16px; }
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#1A1A1A;-webkit-font-smoothing:antialiased}
+.w{max-width:420px;margin:0 auto;padding:12px 16px 32px}
+.rg{margin-bottom:4px}
+.rg-head{display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 0;transition:opacity .15s}
+.rg-head:hover{opacity:.8}
+.rg-name{font-size:14px;font-weight:500;color:#1A1A1A;min-width:90px}
+.rg-bar-w{flex:1;height:24px;display:flex;border-radius:4px;overflow:hidden}
+.rg-seg{height:100%;min-width:2px}
+.rg-arr{width:16px;flex-shrink:0;font-size:11px;color:#9B9590;transition:transform .2s;text-align:center}
+.rg-arr.open{transform:rotate(90deg)}
+.new-badge{font-size:9px;font-weight:500;padding:1px 6px;border-radius:8px;background:#FCEBEB;color:#A32D2D;flex-shrink:0}
+.rg-body{overflow:hidden;max-height:0;transition:max-height .4s ease}
+.rg-body.open{max-height:3000px}
+.row{display:flex;align-items:center;margin-bottom:1px;cursor:pointer;padding:3px 0 3px 4px;transition:background .12s;border-radius:8px}
+.row:hover{background:#F7F5F2}
+.row-arr{width:14px;flex-shrink:0;font-size:9px;color:#9B9590;transition:transform .2s;text-align:center}
+.row-arr.open{transform:rotate(90deg)}
+.row-name{width:95px;flex-shrink:0;font-size:12px;font-weight:500;color:#1A1A1A;padding:4px 6px}
+.row-bar-w{flex:1;padding:2px 0}
+.row-bar-bg{width:100%;height:16px;background:#F7F5F2;border-radius:3px;overflow:hidden}
+.row-bar-fill{height:100%;border-radius:3px}
+.row-stage{font-size:11px;width:70px;flex-shrink:0;padding-left:6px;font-weight:500}
+.row-when{font-size:11px;color:#9B9590;width:70px;flex-shrink:0;text-align:right}
+.dd{overflow:hidden;max-height:0;transition:max-height .3s ease}
+.dd.open{max-height:500px}
+.card{margin:2px 0 6px 20px;padding:10px 12px;border-left:3px solid #185FA5;background:#F7F5F2;border-radius:0;font-size:12px;color:#6B6560;line-height:1.6}
+.card b{color:#1A1A1A;font-weight:500}
+.card-action{color:#0C447C;font-weight:500;margin-top:6px;padding-top:6px;border-top:1px solid #E0D8D0}
+.card-news{font-size:11px;color:#9B9590;margin-top:6px;font-style:italic}
+.row-new{display:inline-block;width:6px;height:6px;border-radius:50%;background:#A32D2D;margin-left:4px;flex-shrink:0}
+@media(max-width:600px){.w{padding:8px 12px 24px}.row-name{width:80px;font-size:11px}.row-stage{width:60px;font-size:10px}.row-when{width:60px;font-size:10px}.card{margin-left:8px}}
 </style>
 </head>
 <body>
-<div class="page">
-
-  <div class="kicker">Social media &amp; minors</div>
-  <h1>The global social media ban tracker</h1>
-  <p class="subtitle">From Australia's under-16 ban to Europe's legislative sprint, governments are rethinking whether children should have open access to social media. Here's where every market stands — and what it means for your campaigns.</p>
-
-  <div class="stats">
-    <div class="stat"><span class="stat-val">3</span><span class="stat-lab">Bans live</span></div>
-    <div class="stat"><span class="stat-val">4</span><span class="stat-lab">Laws enacted</span></div>
-    <div class="stat"><span class="stat-val">14+</span><span class="stat-lab">Markets moving</span></div>
-    <div class="stat"><span class="stat-val">0</span><span class="stat-lab">US federal ban</span></div>
-  </div>
-
-  <div class="legend">
-    <span class="leg-item"><span class="leg-dot" style="background:var(--s1)"></span>Discussions</span>
-    <span class="leg-item"><span class="leg-dot" style="background:var(--s2)"></span>Announced</span>
-    <span class="leg-item"><span class="leg-dot" style="background:var(--s3)"></span>Legislated</span>
-    <span class="leg-item"><span class="leg-dot" style="background:var(--s4)"></span>Enacted</span>
-    <span class="leg-item"><span class="leg-dot" style="background:var(--s5)"></span>Live</span>
-  </div>
-
-  <div id="regions"></div>
-
-  <div class="thesis">
-    <div class="thesis-tag">The thesis</div>
-    <div class="thesis-body">Australia set the template. Europe is sprinting to follow. The US is stuck in legislative gridlock. For marketers targeting youth audiences, the compliance surface is fragmenting fast — and the platforms you buy on are scrambling to keep up.</div>
-  </div>
-  <div class="source-line" id="source-line">The Current · April 2026</div>
-
-</div>
-
+<div class="w"><div style="font-size:16px;font-weight:500;color:#1A1A1A;margin-bottom:12px">Global social media ban tracker</div><div id="rgs"></div></div>
 <script>
-var ST = [
-  { name: 'Discussions', fill: '#B5D4F4', text: '#0C447C', pct: 20 },
-  { name: 'Announced',   fill: '#85B7EB', text: '#042C53', pct: 40 },
-  { name: 'Legislated',  fill: '#378ADD', text: '#fff',    pct: 60 },
-  { name: 'Enacted',     fill: '#185FA5', text: '#fff',    pct: 80 },
-  { name: 'Live',        fill: '#042C53', text: '#fff',    pct: 100 }
-];
+var SC=['#B5D4F4','#85B7EB','#378ADD','#185FA5','#042C53'];
+var ST=['Discussions','Announced','Legislated','Enacted','Live'];
+var NOW=new Date();
+function isNew(ds){if(!ds||ds==='—'||ds.includes('earliest')||ds.includes('Uncertain')||ds.includes('No '))return false;if(ds==='Live now')ds='Apr 2026';if(ds.startsWith('Live since '))ds=ds.replace('Live since ','');if(ds.startsWith('Enforced since '))ds=ds.replace('Enforced since ','');var map={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};var p=ds.split(' ');if(p.length<2)return false;var m=map[p[0]],y=parseInt(p[1]);if(isNaN(m)||isNaN(y))return false;return(NOW-new Date(y,m,15))/(864e5)<=5&&(NOW-new Date(y,m,15))>=0}
 
-var DATA = {
-  europe: { title: 'Europe', countries: [
-    { name: 'Spain', stage: 5, when: 'Live now',
-      restriction: 'Under-16s banned from all major social media. Personal executive liability for tech CEOs who fail to protect users.',
-      platforms: 'Meta (Instagram, Facebook, Threads), TikTok, Snapchat, YouTube, X.',
-      action: 'Youth inventory shrinking now. Shift affected budgets to CTV, gaming, or audio channels in Spain.' },
-    { name: 'Portugal', stage: 4, when: 'Mid-2026',
-      restriction: 'Under-13s banned outright. Under-16s need verified parental consent via national Digital Mobile Key.',
-      platforms: 'All major platforms.',
-      action: 'Geo-specific audience suppression needed. Four Southern European markets will each have different age thresholds and verification systems.' },
-    { name: 'France', stage: 3, when: 'Sep 2026',
-      restriction: 'Under-15s banned from social media. Smartphones also banned in high schools.',
-      platforms: 'All major platforms. Tiered rules for messaging apps still being finalised.',
-      action: 'Scenario-plan French youth campaigns for a September 2026 cutoff. The school smartphone ban also reduces all daytime mobile touchpoints for 12-17s.' },
-    { name: 'Denmark', stage: 3, when: 'Mid-2026',
-      restriction: 'Under-15s banned. Parental consent may allow 13-14 year-olds on some platforms via national digital ID.',
-      platforms: 'All major platforms. Messaging apps likely exempt.',
-      action: 'The consent carve-out means some 13-14 audience may remain addressable. Monitor the consent mechanism design closely.' },
-    { name: 'Greece', stage: 2, when: 'Jan 2027',
-      restriction: 'Under-15s banned. No parental consent exemption. Device-level enforcement via state Kids Wallet app.',
-      platforms: 'Any platform with 100K+ active Greek users — including smaller platforms.',
-      action: 'Device-level blocking is harder to circumvent than platform-side checks. Could also affect app install campaigns and mobile web ads.' },
-    { name: 'Austria', stage: 2, when: '2027',
-      restriction: 'Under-14s to be banned — lowest age threshold proposed anywhere in Europe. Draft legislation expected by June 2026.',
-      platforms: 'Expected to cover all major social platforms.',
-      action: 'Small market but Austria\'s low threshold could pull the EU-wide standard down if harmonisation happens.' },
-    { name: 'United Kingdom', stage: 2, when: '2026-27',
-      restriction: 'Under-16 ban passed House of Lords, must pass Commons. Online Safety Act already requires age verification for harmful content.',
-      platforms: 'All major platforms affected by OSA. Full ban scope TBD.',
-      action: 'OSA is already changing ad adjacency rules. If the ban passes Commons, UK becomes the largest Western market with a full ban. Build both scenarios.' },
-    { name: 'Italy', stage: 2, when: '2026-27',
-      restriction: 'Parental consent required for under-14s. New bill would restrict child influencers under 15.',
-      platforms: 'All social platforms. Creator and influencer platforms specifically targeted.',
-      action: 'Review any Italian influencer campaigns featuring under-15 creators. Parental consent layer adds friction to first-party data collection.' },
-    { name: 'Norway', stage: 2, when: 'Late 2026',
-      restriction: 'Under-15s to be banned with mandatory age verification.',
-      platforms: 'All major platforms.',
-      action: 'Norway + Denmark forming a Nordic bloc with consistent under-15 restrictions. Adapt pan-Nordic audience segmentation now.' },
-    { name: 'Slovenia', stage: 2, when: '2027',
-      restriction: 'Under-15s to be banned on specific named platforms.',
-      platforms: 'TikTok, Snapchat, Instagram named specifically. Others may be exempt.',
-      action: 'Platform-specific targeting means some channels stay open while others close. Plan by platform, not just by age.' },
-    { name: 'Germany', stage: 1, when: '2027 earliest',
-      restriction: 'Parliament studying a full ban for all minors. No parental consent exemption proposed — most restrictive model in Europe.',
-      platforms: 'Expected to cover all major platforms if passed.',
-      action: 'EU\'s largest ad market. The no-exemption model would zero out all minor reach on social. Model your German campaigns without any youth audience now.' },
-    { name: 'Finland', stage: 1, when: '2027 earliest',
-      restriction: 'Under-15 ban under active government discussion. Part of Nordic policy bloc.',
-      platforms: 'Expected to cover all major platforms.',
-      action: 'Small direct impact but adds to Nordic bloc momentum. Monitor alongside Denmark and Norway timelines.' },
-    { name: 'Czechia', stage: 1, when: '2027-28',
-      restriction: 'Early-stage policy discussions following Germany\'s lead.',
-      platforms: 'TBD.',
-      action: 'If Germany legislates, Czechia and other CEE markets likely follow within 12-18 months. Low urgency but keep on radar.' }
-  ]},
-  apac: { title: 'Asia-Pacific', countries: [
-    { name: 'Australia', stage: 5, when: 'Live now',
-      restriction: 'Under-16s banned from social media. Fines up to AUD $49.5M per breach. Over 5M accounts removed in first month.',
-      platforms: 'Meta (Instagram, Facebook, Threads), TikTok, YouTube, Snapchat, X, Reddit, Twitch, Kick.',
-      action: 'Teen audience has structurally shrunk. Lookalike modelling from youth seed audiences will degrade. Shift to CTV, gaming, audio, OOH.' },
-    { name: 'Indonesia', stage: 5, when: 'Live now',
-      restriction: 'Under-16s banned. Accounts being deactivated. First ban in Southeast Asia.',
-      platforms: 'YouTube, TikTok, Meta (Facebook, Instagram, Threads), X, Bigo Live, Roblox.',
-      action: '4th-largest country globally. Under-16 reach compressing across all major platforms. Roblox inclusion means gaming platforms are not exempt.' },
-    { name: 'China', stage: 4, when: 'Enforced since 2023',
-      restriction: 'Under-14s limited to 40 minutes per day on short-video platforms. Mandatory youth mode with curated content.',
-      platforms: 'Douyin, Kuaishou, Bilibili, Xiaohongshu.',
-      action: '40-minute daily cap severely compresses ad delivery windows for under-14 audiences. Youth mode excludes most commercial ads. Shift to WeChat ecosystem.' },
-    { name: 'Malaysia', stage: 4, when: 'Mid-2026',
-      restriction: 'Under-16s banned via eKYC digital ID verification. Platforms with 8M+ Malaysian users need operating licences.',
-      platforms: 'All major platforms.',
-      action: 'Platform licensing gives regulators a kill switch. eKYC makes age data more accurate — improving over-16 targeting precision as under-16 reach disappears.' },
-    { name: 'New Zealand', stage: 3, when: 'Late 2026',
-      restriction: 'Under-16 bill in parliament. Select committee published final report recommending ban (March 2026). PM committed to passing before election.',
-      platforms: 'Expected to mirror Australia\'s platform list.',
-      action: 'Bill is in parliament, not just talk. If you plan ANZ campaigns together, build alternative channel strategies for the combined market now.' },
-    { name: 'Pakistan', stage: 2, when: 'Uncertain',
-      restriction: 'Original under-16 ban bill withdrawn after controversy. Government pursuing lower 13-14 age threshold.',
-      platforms: 'TBD.',
-      action: 'Volatile regulatory environment. Small digital ad market but risk of influencing broader South Asian regulation.' }
-  ]},
-  americas: { title: 'Americas', countries: [
-    { name: 'Brazil', stage: 4, when: 'Live since Mar 2026',
-      restriction: 'Under-16 accounts must link to guardians. Infinite scroll, autoplay, push notifications, and loot boxes banned for minors.',
-      platforms: 'All major social and gaming platforms.',
-      action: 'Bans engagement mechanics, not access. If campaigns rely on autoplay or gamified engagement, performance metrics will shift. Rethink creative formats.' },
-    { name: 'United States', stage: 1, when: 'No federal timeline',
-      restriction: 'KOSA and COPPA 2.0 stalled in Congress. State patchwork: Oregon bans targeted ads to minors entirely, Virginia caps under-16s at 1hr/day, NY and CA restrict algorithmic feeds.',
-      platforms: 'Varies by state. No uniform federal scope.',
-      action: 'Biggest ad market with no national standard. Oregon\'s targeted-ad ban is the most aggressive state action. LA liability verdict may force platform-level restrictions faster than legislation.' }
-  ]}
+var DATA={
+europe:{title:'Europe',countries:[
+{name:'Spain',stage:5,when:'Live now',restriction:'Under-16s banned. Executive liability for tech CEOs.',platforms:'Meta, TikTok, Snapchat, YouTube, X.',action:'First European ban live. Executive liability means platforms will over-comply across the EU, not just Spain. Top-5 EU ad market by spend.'},
+{name:'Portugal',stage:4,when:'Mid-2026',restriction:'Under-13s banned. Under-16s need parental consent via Digital Mobile Key.',platforms:'All major platforms.',action:'First country using national digital ID for age verification. If the model works, expect it to spread across the EU.'},
+{name:'France',stage:3,when:'Sep 2026',restriction:'Under-15s banned. Smartphones also banned in high schools.',platforms:'All major platforms. Tiered messaging rules TBD.',action:'EU\u2019s second-largest ad market. The school smartphone ban eliminates all daytime mobile touchpoints for 12-17s \u2014 not just social.'},
+{name:'Denmark',stage:3,when:'Mid-2026',restriction:'Under-15s banned. Parental consent may allow 13-14s.',platforms:'All major platforms. Messaging likely exempt.',action:'The parental consent carve-out for 13-14s could become the template for whether any youth audience remains addressable in Europe.'},
+{name:'Greece',stage:2,when:'Jan 2027',restriction:'Under-15s banned. No consent exemption. Device-level Kids Wallet enforcement.',platforms:'Any platform with 100K+ Greek users.',action:'Device-level blocking is harder to circumvent than any platform-side check. If this model spreads, it changes the enforcement game across the EU.',updated:'Apr 2026'},
+{name:'Austria',stage:2,when:'2027',restriction:'Under-14s to be banned \u2014 lowest threshold in Europe. Draft legislation by June 2026.',platforms:'Expected all major platforms.',action:'Under-14 is lower than any European peer. If EU harmonisation happens, Austria\u2019s floor could pull the continent-wide standard down.'},
+{name:'United Kingdom',stage:2,when:'2026-27',restriction:'Under-16 ban passed Lords. Online Safety Act already requires age verification.',platforms:'All major platforms.',action:'If the ban passes Commons, the UK becomes the largest Western market with a full social media ban for minors.'},
+{name:'Italy',stage:2,when:'2026-27',restriction:'Parental consent for under-14s. New bill would restrict child influencers under 15.',platforms:'All social platforms. Creator and influencer platforms targeted.',action:'Italy\u2019s influencer-specific restrictions are unique in Europe. Any brand using under-15 talent in Italian campaigns faces new compliance risk.'},
+{name:'Norway',stage:2,when:'Late 2026',restriction:'Under-15s to be banned with mandatory age verification.',platforms:'All major platforms.',action:'Norway + Denmark forming a Nordic bloc with consistent under-15 restrictions. Pan-Nordic campaigns will face uniform rules.'},
+{name:'Slovenia',stage:2,when:'2027',restriction:'Under-15s to be banned on named platforms.',platforms:'TikTok, Snapchat, Instagram specifically named. Others may be exempt.',action:''},
+{name:'Germany',stage:1,when:'2027 earliest',restriction:'Parliament studying a full ban. No parental consent exemption proposed.',platforms:'Expected all major platforms.',action:'EU\u2019s largest ad market. The no-exemption model would zero out all minor reach on social platforms. Even at study stage, this is the one to watch.'},
+{name:'Finland',stage:1,when:'2027 earliest',restriction:'Under-15 ban under active government discussion.',platforms:'Expected all major platforms.',action:''},
+{name:'Czechia',stage:1,when:'2027-28',restriction:'Early-stage discussions following Germany\u2019s lead.',platforms:'TBD.',action:''}
+]},
+apac:{title:'Asia-Pacific',countries:[
+{name:'Australia',stage:5,when:'Live now',restriction:'Under-16s banned. Fines up to AUD $49.5M. Over 5M accounts removed in first month.',platforms:'Meta, TikTok, YouTube, Snapchat, X, Reddit, Twitch, Kick.',action:'The global template. 5M+ accounts removed means youth audience has structurally shrunk. eSafety Commissioner actively investigating major platforms for non-compliance.'},
+{name:'Indonesia',stage:5,when:'Live now',restriction:'Under-16s banned. First ban in Southeast Asia.',platforms:'YouTube, TikTok, Meta, X, Bigo Live, Roblox.',action:'World\u2019s 4th-largest country. Roblox inclusion signals gaming platforms are not exempt \u2014 a precedent other countries will follow.'},
+{name:'China',stage:4,when:'Enforced since 2023',restriction:'Under-14s limited to 40 min/day on short-video. Youth mode mandatory.',platforms:'Douyin, Kuaishou, Bilibili, Xiaohongshu.',action:'40-minute daily cap compresses ad delivery windows to near-zero for under-14 audiences. Youth mode excludes most commercial advertising.'},
+{name:'Malaysia',stage:4,when:'Mid-2026',restriction:'Under-16s banned via eKYC. Platforms with 8M+ users need operating licences.',platforms:'All major platforms.',action:'Platform licensing gives regulators a kill switch that most countries lack. First market where non-compliance could mean losing the right to operate entirely.'},
+{name:'New Zealand',stage:3,when:'Late 2026',restriction:'Under-16 bill in parliament. Select committee recommended ban in March 2026.',platforms:'Expected to mirror Australia\u2019s platform list.',action:'Bill is in parliament, not just talk. Combined with Australia, the entire ANZ youth audience on social will be legally restricted.'},
+{name:'Pakistan',stage:2,when:'Uncertain',restriction:'Original under-16 bill withdrawn. Government pursuing lower 13-14 threshold.',platforms:'TBD.',action:'Volatile. The bigger risk is Pakistan\u2019s approach influencing India and other South Asian markets.'}
+]},
+americas:{title:'Americas',countries:[
+{name:'Brazil',stage:4,when:'Live since Mar 2026',restriction:'Autoplay, infinite scroll, push notifications banned for under-16 accounts.',platforms:'All major social and gaming platforms.',action:'Latin America\u2019s largest digital ad market. Doesn\u2019t ban access \u2014 bans the design mechanics that drive engagement metrics. Campaigns built on autoplay and gamified formats will underperform.'},
+{name:'United States',stage:1,when:'No federal timeline',restriction:'KOSA stalled. Oregon bans targeted ads to minors. State-by-state patchwork.',platforms:'Varies by state. No uniform scope.',action:'World\u2019s largest ad market with no national standard. The LA social media liability verdict (March 2026) may force platform-level restrictions faster than Congress ever could.'}
+]}
 };
 
-var el = document.getElementById('regions');
-
-Object.entries(DATA).forEach(function(entry) {
-  var rk = entry[0], rd = entry[1];
-  var sec = document.createElement('div');
-  sec.className = 'region';
-  sec.innerHTML = '<div class="region-head">' + rd.title + ' <span class="region-sub">&middot; ' + rd.countries.length + ' markets with active measures</span></div>';
-  var list = document.createElement('div');
-
-  rd.countries.forEach(function(c, idx) {
-    var s = ST[c.stage - 1];
-    var uid = rk + idx;
-
-    var row = document.createElement('div');
-    row.className = 'row';
-    row.innerHTML = '<div class="row-arr" id="a' + uid + '">&#9654;</div>'
-      + '<div class="row-name">' + c.name + '</div>'
-      + '<div class="row-bar-w"><div class="row-bar-bg"><div class="row-bar-fill" style="width:' + s.pct + '%;background:' + s.fill + '"></div></div></div>'
-      + '<div class="row-stage" style="color:' + s.fill + '">' + s.name + '</div>'
-      + '<div class="row-when">' + c.when + '</div>';
-
-    var dd = document.createElement('div');
-    dd.className = 'dd';
-    dd.id = 'd' + uid;
-    dd.innerHTML = '<div class="card">'
-      + '<div class="card-line"><b>Restriction:</b> ' + c.restriction + '</div>'
-      + '<div class="card-line"><b>Platforms:</b> ' + c.platforms + '</div>'
-      + '<div class="card-action">' + c.action + '</div>'
-      + '<div class="card-news" data-country="' + c.name + '"></div>'
-      + '</div>';
-
-    row.onclick = function() {
-      var isOpen = dd.classList.contains('open');
-      document.querySelectorAll('.dd.open').forEach(function(d) { d.classList.remove('open'); });
-      document.querySelectorAll('.row-arr.open').forEach(function(a) { a.classList.remove('open'); });
-      if (!isOpen) {
-        dd.classList.add('open');
-        document.getElementById('a' + uid).classList.add('open');
-      }
-    };
-
-    list.appendChild(row);
-    list.appendChild(dd);
-  });
-
-  sec.appendChild(list);
-  el.appendChild(sec);
+var el=document.getElementById('rgs');
+Object.entries(DATA).forEach(function(entry){
+var rk=entry[0],rd=entry[1];
+var sec=document.createElement('div');
+sec.className='rg';
+var n=rd.countries.length;
+var hasNew=rd.countries.some(function(c){return c.updated&&isNew(c.updated)});
+var head=document.createElement('div');
+head.className='rg-head';
+head.id='rh-'+rk;
+var segWidth=100/n;
+var barHTML='';
+rd.countries.forEach(function(c){barHTML+='<div class="rg-seg" style="width:'+segWidth+'%;background:'+SC[c.stage-1]+'"></div>'});
+head.innerHTML='<div class="rg-arr" id="ra-'+rk+'">&#9654;</div><span class="rg-name">'+rd.title+'</span><div class="rg-bar-w">'+barHTML+'</div>'+(hasNew?'<span class="new-badge">new</span>':'');
+var body=document.createElement('div');
+body.className='rg-body';
+body.id='rb-'+rk;
+rd.countries.forEach(function(c,idx){
+var col=SC[c.stage-1];var uid=rk+idx;var cNew=c.updated&&isNew(c.updated);
+var row=document.createElement('div');
+row.className='row';
+row.innerHTML='<div class="row-arr" id="a'+uid+'">&#9654;</div><div class="row-name">'+c.name+(cNew?'<span class="row-new"></span>':'')+'</div><div class="row-bar-w"><div class="row-bar-bg"><div class="row-bar-fill" style="width:'+(c.stage*20)+'%;background:'+col+'"></div></div></div><div class="row-stage" style="color:'+col+'">'+ST[c.stage-1]+'</div><div class="row-when">'+c.when+'</div>';
+var dd=document.createElement('div');
+dd.className='dd';dd.id='d'+uid;
+dd.innerHTML='<div class="card"><b>'+c.restriction+'</b><br><span style="color:#9B9590">Platforms:</span> '+c.platforms+(c.action?'<div class="card-action">'+c.action+'</div>':'')+'<div class="card-news" data-country="'+c.name+'"></div></div>';
+row.onclick=function(e){e.stopPropagation();var open=dd.classList.contains('open');body.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')});body.querySelectorAll('.row-arr.open').forEach(function(a){a.classList.remove('open')});if(!open){dd.classList.add('open');document.getElementById('a'+uid).classList.add('open')}};
+body.appendChild(row);body.appendChild(dd);
+});
+head.onclick=function(){
+var open=body.classList.contains('open');
+if(open){body.classList.remove('open');document.getElementById('ra-'+rk).classList.remove('open');head.querySelector('.rg-bar-w').style.display='';head.querySelector('.rg-name').style.flex=''}
+else{body.classList.add('open');document.getElementById('ra-'+rk).classList.add('open');head.querySelector('.rg-bar-w').style.display='none';head.querySelector('.rg-name').style.flex='1'}
+};
+body.addEventListener('transitionend',function(){if(!body.classList.contains('open')){head.querySelector('.rg-bar-w').style.display='';head.querySelector('.rg-name').style.flex=''}});
+sec.appendChild(head);sec.appendChild(body);el.appendChild(sec);
 });
 
-// Load news-data.json if available
-(async function() {
-  try {
-    var r = await fetch('news-data.json');
-    if (!r.ok) return;
-    var d = await r.json();
-    var cs = d.countries || {};
-    var map = {
-      US:'United States', BR:'Brazil', AU:'Australia', ID:'Indonesia',
-      FR:'France', DK:'Denmark', ES:'Spain', PT:'Portugal', DE:'Germany',
-      UK:'United Kingdom', IT:'Italy', NO:'Norway', GR:'Greece', AT:'Austria',
-      SI:'Slovenia', FI:'Finland', CZ:'Czechia', CN:'China', MY:'Malaysia',
-      PK:'Pakistan', NZ:'New Zealand'
-    };
-    Object.entries(cs).forEach(function(e) {
-      var code = e[0], info = e[1];
-      if (!info.headline || info.headline === 'No recent developments') return;
-      var name = map[code];
-      if (!name) return;
-      var node = document.querySelector('.card-news[data-country="' + name + '"]');
-      if (node) {
-        var src = info.source ? ' \u2014 ' + info.source : '';
-        node.textContent = info.headline + src;
-      }
-    });
-    if (d.updated) {
-      document.getElementById('source-line').textContent = 'The Current \u00b7 News updated ' + d.updated;
-    }
-  } catch(e) {}
-})();
+(async function(){try{var r=await fetch('news-data.json');if(!r.ok)return;var d=await r.json();var cs=d.countries||{};var map={US:'United States',BR:'Brazil',AU:'Australia',ID:'Indonesia',FR:'France',DK:'Denmark',ES:'Spain',PT:'Portugal',DE:'Germany',UK:'United Kingdom',IT:'Italy',NO:'Norway',GR:'Greece',AT:'Austria',SI:'Slovenia',FI:'Finland',CZ:'Czechia',CN:'China',MY:'Malaysia',PK:'Pakistan',NZ:'New Zealand'};Object.entries(cs).forEach(function(e){var code=e[0],info=e[1];if(!info.headline||info.headline==='No recent developments')return;var name=map[code];if(!name)return;var node=document.querySelector('.card-news[data-country="'+name+'"]');if(node){node.textContent=info.headline+(info.source?' \u2014 '+info.source:'')}});}catch(e){}})();
 </script>
 </body>
 </html>
